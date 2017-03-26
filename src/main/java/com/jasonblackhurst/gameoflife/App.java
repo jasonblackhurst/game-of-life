@@ -1,5 +1,7 @@
 package com.jasonblackhurst.gameoflife;
 
+import java.util.Scanner;
+
 /**
  * Game of Life Application
  *
@@ -14,11 +16,29 @@ public class App
     int currentRow = 1;
     public static void main( String[] args )
     {
-        System.out.println( "Hello World!" );
+        App gameOfLifeApp = new App();
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("Enter the starting state one line at a time using O for live cells and . for dead cells");
+        System.out.println();
+
+        for (int x = 0; x < 6; x++){
+            gameOfLifeApp.addRow(scanner.next());
+        }
+
+        System.out.println("One tick later looks like this: ");
+        System.out.println();
+
+        gameOfLifeApp.tick();
+        gameOfLifeApp.printBoard();
     }
 
     public Board getBoard() {
         return board;
+    }
+
+    public void tick() {
+        board.tick();
     }
 
     public void addRow(String row) {
