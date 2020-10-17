@@ -1,8 +1,7 @@
 package com.jasonblackhurst.gameoflife;
 
-import org.junit.Test;
-
-import static org.junit.Assert.*;
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
 
 /**
  * Created by jason_blackhurst on 3/25/17.
@@ -12,9 +11,9 @@ public class AppTest {
     @Test
     public void testBoard() {
         Board board = new Board();
-        assertFalse("Cell should be dead", board.at(1,1));
+        assertFalse(board.at(1,1), "Cell should be dead");
         board.setAliveAt(1,1);
-        assertTrue("Cell should be alive", board.at(1,1));
+        assertTrue(board.at(1,1), "Cell should be alive");
     }
 
     @Test
@@ -27,8 +26,8 @@ public class AppTest {
         app.addRow("........");
         app.addRow("...OO...");
         app.addRow("...OO...");
-        assertTrue("Cell at 1,7 should be alive", app.getBoard().at(1,7));
-        assertTrue("Cell at 5,4 should be alive", app.getBoard().at(5,4));
+        assertTrue(app.getBoard().at(1,7), "Cell at 1,7 should be alive");
+        assertTrue(app.getBoard().at(5,4), "Cell at 5,4 should be alive");
     }
 
     @Test
@@ -46,7 +45,7 @@ public class AppTest {
         board.setAliveAt(1,2);
         board.setAliveAt(2,1);
         board.tick();
-        assertTrue("Cell with 2 neighbors should live", board.at(1,1));
+        assertTrue(board.at(1,1), "Cell with 2 neighbors should live");
     }
 
     @Test
@@ -57,7 +56,7 @@ public class AppTest {
         board.setAliveAt(2,1);
         board.setAliveAt(2,2);
         board.tick();
-        assertTrue("Cell with 3 neighbors should live", board.at(1,1));
+        assertTrue(board.at(1,1), "Cell with 3 neighbors should live");
     }
 
     @Test
@@ -83,7 +82,7 @@ public class AppTest {
                 }
             }
             board.tick();
-            assertFalse("Cell with " +livingCountUnderTest + " neighbors should die", board.at(xToTest, yToTest));
+            assertFalse(board.at(xToTest, yToTest), "Cell with " +livingCountUnderTest + " neighbors should die");
         }
     }
 
@@ -95,6 +94,6 @@ public class AppTest {
         board.setAliveAt(2,1);
         board.setAliveAt(2,2);
         board.tick();
-        assertTrue("Dead cell with 3 neighbors should become a live cell", board.at(1,1));
+        assertTrue(board.at(1,1), "Dead cell with 3 neighbors should become a live cell");
     }
 }
